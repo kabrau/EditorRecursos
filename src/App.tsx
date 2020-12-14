@@ -153,13 +153,21 @@ const App = () => {
       } else {
         let _items = [...items, itemEdited];
         _items = _items.sort((a, b) =>
-          a.Key.toLocaleLowerCase() > b.Key.toLocaleLowerCase() ? 1 : b.Key.toLocaleLowerCase() > a.Key.toLocaleLowerCase() ? -1 : 0
+          a.Key.toLocaleLowerCase() > b.Key.toLocaleLowerCase()
+            ? 1
+            : b.Key.toLocaleLowerCase() > a.Key.toLocaleLowerCase()
+            ? -1
+            : 0
         );
         setItems(_items);
 
         let _itemsFiltered = [...itemsFiltered, itemEdited];
         _itemsFiltered = _itemsFiltered.sort((a, b) =>
-          a.Key.toLocaleLowerCase() > b.Key.toLocaleLowerCase() ? 1 : b.Key.toLocaleLowerCase() > a.Key.toLocaleLowerCase() ? -1 : 0
+          a.Key.toLocaleLowerCase() > b.Key.toLocaleLowerCase()
+            ? 1
+            : b.Key.toLocaleLowerCase() > a.Key.toLocaleLowerCase()
+            ? -1
+            : 0
         );
         setItemsFiltered(_itemsFiltered);
 
@@ -182,7 +190,11 @@ const App = () => {
         ] = itemEdited;
 
         _itemsFiltered = _itemsFiltered.sort((a, b) =>
-          a.Key.toLocaleLowerCase() > b.Key.toLocaleLowerCase() ? 1 : b.Key.toLocaleLowerCase() > a.Key.toLocaleLowerCase() ? -1 : 0
+          a.Key.toLocaleLowerCase() > b.Key.toLocaleLowerCase()
+            ? 1
+            : b.Key.toLocaleLowerCase() > a.Key.toLocaleLowerCase()
+            ? -1
+            : 0
         );
         setItemsFiltered(_itemsFiltered);
 
@@ -194,7 +206,11 @@ const App = () => {
         ] = itemEdited;
 
         _items = _items.sort((a, b) =>
-          a.Key.toLocaleLowerCase() > b.Key.toLocaleLowerCase() ? 1 : b.Key.toLocaleLowerCase() > a.Key.toLocaleLowerCase() ? -1 : 0
+          a.Key.toLocaleLowerCase() > b.Key.toLocaleLowerCase()
+            ? 1
+            : b.Key.toLocaleLowerCase() > a.Key.toLocaleLowerCase()
+            ? -1
+            : 0
         );
 
         setItems(_items);
@@ -215,11 +231,11 @@ const App = () => {
     setItemsFiltered(
       items.filter(
         (i) =>
-          i.Key.toLowerCase().indexOf(s) !== -1 ||
-          i.ptBR.toLowerCase().indexOf(s) !== -1 ||
-          i.enUS.toLowerCase().indexOf(s) !== -1 ||
-          i.esES.toLowerCase().indexOf(s) !== -1 ||
-          i.deDE.toLowerCase().indexOf(s) !== -1
+          (i.Key && i.Key.toLowerCase().indexOf(s) !== -1) ||
+          (i.ptBR && i.ptBR.toLowerCase().indexOf(s) !== -1) ||
+          (i.enUS && i.enUS.toLowerCase().indexOf(s) !== -1) ||
+          (i.esES && i.esES.toLowerCase().indexOf(s) !== -1) ||
+          (i.deDE && i.deDE.toLowerCase().indexOf(s) !== -1)
       )
     );
   };
