@@ -264,6 +264,10 @@ const App = () => {
     setUpdated(true);
   };
 
+  const FecharAplicacao = () => {
+    window.close();
+  };
+
   return (
     <MyLayout>
       <MyHeader>
@@ -392,9 +396,27 @@ const App = () => {
                 Salvar alterações
               </Button>
             )}
-            <Button type="primary" icon={<LogoutOutlined />}>
-              Sair do App
-            </Button>
+
+            {updated ? (
+              <Popconfirm
+                title="Tem certeza que deseja sair sem salvar ?"
+                onConfirm={FecharAplicacao}
+                okText="Sim, não vou salvar"
+                cancelText="Voltar"
+              >
+                <Button type="primary" icon={<LogoutOutlined />}>
+                  Sair do App
+                </Button>
+              </Popconfirm>
+            ) : (
+              <Button
+                type="primary"
+                icon={<LogoutOutlined />}
+                onClick={FecharAplicacao}
+              >
+                Sair do App
+              </Button>
+            )}
           </Space>
 
           <div>
