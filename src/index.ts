@@ -1,6 +1,4 @@
 import { app, BrowserWindow, Menu } from "electron";
-import path from "path";
-import url from "url";
 
 //import fs from "fs";
 //import electron from 'electron';
@@ -18,38 +16,42 @@ Menu.setApplicationMenu(null);
 
 const createWindow = (): void => {
   const splash = new BrowserWindow({
-    titleBarStyle: 'hidden',
+    show: false,
+    titleBarStyle: "hidden",
     width: 600,
     height: 400,
     frame: false,
   });
   splash.setResizable(false);
-  splash.loadURL("https://source.unsplash.com/600x400/?funny")
+  splash.loadURL("https://source.unsplash.com/600x400/?funny");
 
-  // Create the browser window.
-  const mainWindow = new BrowserWindow({
-    show: false,
-    height: 1024,
-    width: 1280,
-    fullscreenable: true,
-    webPreferences: {
-      nodeIntegration: true,
-    },
+  splash.webContents.once("dom-ready", () => {
+    splash.show();
+
+    // Create the browser window.
+    const mainWindow = new BrowserWindow({
+      show: false,
+      height: 1024,
+      width: 1280,
+      fullscreenable: true,
+      webPreferences: {
+        nodeIntegration: true,
+      },
+    });
+
+    mainWindow.webContents.once("dom-ready", () => {
+      console.log("main loaded");
+      mainWindow.maximize();
+      mainWindow.show();
+      splash.hide();
+      splash.close();
+    });
+
+    mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
+    // Open the DevTools.
+    //mainWindow.webContents.openDevTools();
   });
-
-  mainWindow.webContents.once("dom-ready", () => {
-    console.log("main loaded");
-    mainWindow.maximize();
-    mainWindow.show();
-    splash.hide();
-    splash.close();
-  });
-
   // and load the index.html of the app.
-  mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
-
-  // Open the DevTools.
-  //mainWindow.webContents.openDevTools();
 };
 
 // This method will be called when Electron has finished
