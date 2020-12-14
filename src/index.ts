@@ -1,8 +1,5 @@
 import { app, BrowserWindow, Menu } from "electron";
-
-//import fs from "fs";
-//import electron from 'electron';
-//const settings = require('electron-settings');
+import isDev from "electron-is-dev";
 
 declare const MAIN_WINDOW_WEBPACK_ENTRY: any;
 
@@ -48,8 +45,9 @@ const createWindow = (): void => {
     });
 
     mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
+
     // Open the DevTools.
-    //mainWindow.webContents.openDevTools();
+    if (isDev) mainWindow.webContents.openDevTools();
   });
   // and load the index.html of the app.
 };
