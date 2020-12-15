@@ -301,6 +301,11 @@ const App = () => {
             dataIndex="enUS"
           />
           <Table.Column<IProjectItem>
+            key="esES"
+            title="Espanhol"
+            dataIndex="esES"
+          />
+          <Table.Column<IProjectItem>
             key="Action"
             title="Ação"
             render={(text: string, record: IProjectItem) => {
