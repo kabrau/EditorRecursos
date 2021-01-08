@@ -4,7 +4,7 @@ Utilizado nos sistemas [Publi - www.publi.com.br](https://www.publi.com.br)
 
 Autor: Marcelo Cabral
 
-Desenvolvido em Electron + React
+Desenvolvido em [Electron](https://www.electronjs.org/) + [React](https://reactjs.org/)
 
 Para usar baixe o ultimo [release](https://github.com/kabrau/EditorRecursos/releases) e execute **Editor de Recursos.exe**
 
